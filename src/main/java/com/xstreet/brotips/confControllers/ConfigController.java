@@ -24,6 +24,6 @@ public class ConfigController {
                 new Board("Health" , "Board Description" , "Board Short Description" , true)
         );
         boardService.saveBoardList(boards);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>("Board are configured" , HttpStatus.CREATED);
     }
 }

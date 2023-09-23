@@ -25,6 +25,6 @@ public class Post {
     @Column
     private Long createdBy;
     @ManyToOne
-    @JoinColumn(name="board_id" , nullable = true , referencedColumnName = "id")
-    private Long boardId;
+    @JoinColumn(name="board_id")
+    private Board boardId;
 }
