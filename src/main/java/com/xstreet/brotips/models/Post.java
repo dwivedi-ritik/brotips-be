@@ -1,5 +1,6 @@
 package com.xstreet.brotips.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,5 +27,6 @@ public class Post {
     private Long createdBy;
     @ManyToOne
     @JoinColumn(name="board_id")
+    @JsonIgnore
     private Board boardId;
 }

@@ -14,8 +14,11 @@ public class BoardService {
     /*
         Configure all the boards for Post creation
      */
-    public Boolean saveBoardList(List<Board> boards){
+    public void saveBoardList(List<Board> boards){
         boardRepository.saveAll(boards);
-        return true;
+    }
+
+    public List<Board> getAllBoards(){
+        return boardRepository.findAll();
     }
 }

@@ -19,8 +19,7 @@ public class PostService {
     public PostPaginationRepository postPaginationRepository;
 
     public Post addPost(Post post){
-        Post savedPost = postRepository.save(post);
-        return savedPost;
+        return postRepository.save(post);
     }
 
     public Post getPostById(Long id){
@@ -28,9 +27,8 @@ public class PostService {
         return post.orElse(null);
     }
 
-
     public List<Post> getPaginatedPosts(Long pageSize , Long pageNumber){
-        Pageable pageable =  PageRequest.of(pageNumber.intValue() , pageSize.intValue());
+        Pageable pageable = PageRequest.of(pageNumber.intValue() , pageSize.intValue());
         return postPaginationRepository.findAll(pageable).getContent();
     }
 }
