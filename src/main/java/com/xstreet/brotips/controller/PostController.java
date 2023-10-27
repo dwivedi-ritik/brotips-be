@@ -4,6 +4,8 @@ import com.xstreet.brotips.models.Board;
 import com.xstreet.brotips.models.Post;
 import com.xstreet.brotips.repository.BoardRepository;
 import com.xstreet.brotips.service.PostService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +21,12 @@ public class PostController {
     public PostService postService;
     @Autowired
     public BoardRepository boardRepository;
+
+    private final Logger  logger = LoggerFactory.getLogger(PostController.class);
+
     @PostMapping("/{boardId}/createPost")
     public ResponseEntity<Post> createPost(@PathVariable Long boardId, @RequestBody Post post){
+        logger.info("Post Request at /api/post/"+boardId+"/createPost");
         Board board = boardRepository.findById(boardId).orElse(null);
         post.setBoardId(board);
         Post savedPost = postService.addPost(post);
