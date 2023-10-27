@@ -18,6 +18,11 @@ public class BoardService {
         boardRepository.saveAll(boards);
     }
 
+    public Board saveBoard(Board board){
+       Board savedBoard = boardRepository.save(board);
+       return savedBoard;
+    }
+
     public List<Board> getAllBoards(){
         return boardRepository.findAll();
     }
