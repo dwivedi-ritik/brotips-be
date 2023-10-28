@@ -11,5 +11,4 @@ public class PostEntity {
     private Post post;
     private Board board;
 
-
 }

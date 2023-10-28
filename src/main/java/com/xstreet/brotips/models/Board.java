@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,19 +18,13 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long boardId;
     @NotNull
-    @Max(64)
+    @Size(min = 2 , max = 64,  message = "boardName size must be between 2 to 64")
     private String boardName;
-    @Max(400)
-    private String boardDescription;
-    @Max(120)
+    @Size(min = 2 , max = 240 , message = "boardShortDescription length must be between 2 to 240")
     private String boardShortDescription;
-    @NotNull
-    private Boolean isNfsw;
-//    public Board(String boardName , String boardDescription , String boardShortDescription, Boolean isNfsw){
-//        this.boardName = boardName;
-//        this.boardDescription = boardDescription;
-//        this.boardShortDescription = boardShortDescription;
-//        this.isNfsw = isNfsw;
-//    }
+    @Size(min = 8 , max=600, message = "boardDescription length must be between 8 to 600")
+    private String boardDescription;
+    @NotNull(message = "isNsfw can't be null")
+    private Boolean isNsfw;
 
 }
